@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vogue Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.js"></script>
+    <script src="./bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="../slider.css">
+
+    <style type="text/css">
+
+      #container {
+        width: 960px;
+        margin: 0 auto;
+        margin-top: 50px;
+      }
+
+      #output {
+        white-space: pre;
+        margin-top: 30px;
+      }
+
+    </style>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var Slider = require('./slider')
+        var slider = new Slider
+        $('#output').append(slider.render().el)
+      })
+    </script>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="output"></div>
+    </div>
+
+  </body>
+</html>
