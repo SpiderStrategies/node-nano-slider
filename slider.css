@@ -35,7 +35,22 @@
   background-image: linear-gradient(bottom, #fbfbfb 0%, #fdfdfd 100%);
 }
 
+/* This is the oversized grab area so you don't have to hit the blue ball handle exactly */
 .slider .slider-bar-wrapper .slider-bar .slider-handle {
+  position: absolute;
+  padding: 10px;
+  top: -15px;
+  margin-left: -15px;
+  left: 10%;
+}
+
+/* Draw the blue ball handle */
+.slider .slider-bar-wrapper .slider-bar .slider-handle:before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
   border: 1px solid #2063b6;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -52,26 +67,20 @@
   background-image: -o-linear-gradient(bottom, #459cf4 0%, #2a6dcc 26.64%, #65c1ff 95.83%, #65c1ff 100%);
   background-image: -webkit-linear-gradient(bottom, #459cf4 0%, #2a6dcc 26.64%, #65c1ff 95.83%, #65c1ff 100%);
   background-image: linear-gradient(bottom, #459cf4 0%, #2a6dcc 26.64%, #65c1ff 95.83%, #65c1ff 100%);
-  position: absolute;
-  top: -5px;
-  left: 4%;
-  width: 16px;
-  height: 16px;
-  margin-left: -10px;
-  cursor: pointer;
 }
 
-/* Add the glare on the top of the slider handle */
+/* Add the glare on the top of the blue ball slider handle */
 .slider .slider-bar-wrapper .slider-bar .slider-handle:after {
   content: "";
   position: absolute;
-  top: 1px;
-  left: 1px;
-  width: 80%;
-  height: 50%;
-  -moz-border-radius: 6px / 4px;
-  -webkit-border-radius: 6px / 4px;
-  border-radius: 6px / 4px;
+  display: block;
+  top: 12px;
+  left: 13px;
+  width: 12px;
+  height: 8px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
