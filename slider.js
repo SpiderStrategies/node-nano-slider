@@ -5,10 +5,6 @@ function pageX(e) {
   return e.type === 'touchmove' || e.type == 'touchstart' ? e.originalEvent.touches[0].pageX : e.pageX
 }
 
-function pageY(e) {
-  return e.type === 'touchmove'|| e.type == 'touchstart' ? e.originalEvent.touches[0].pageY : e.pageY
-}
-
 var Handle = Backbone.View.extend({
 
   className: 'slider-handle',
