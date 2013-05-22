@@ -35,9 +35,12 @@ var Handle = Backbone.View.extend({
     e.stopPropagation()
     var percentage = (pageX(e) - this.$el.parent().offset().left) / this.$el.parent().width()
     if (percentage > 0 && percentage < 1) {
-      this.$el.css('left', parseInt(percentage * 100, 10) + '%')
       this.trigger('change', percentage)
     }
+  },
+
+  position: function (value) {
+    this.$el.css('left', parseInt(value * 100, 10) + '%')
   },
 
   end: function (e) {
@@ -62,19 +65,34 @@ var Slider = Backbone.View.extend({
             '</div>' +
             '<div class="slider-big"></div>',
 
+  initialize: function () {
+    this.min = _.isUndefined(this.options.min) ? 0 : this.options.min
+    this.max = _.isUndefined(this.options.max) ? 100 : this.options.max
+    this.value = _.isUndefined(this.options.value) ? this.min : this.options.value
+    this.distance = this.max - this.min + 1
+    this.step = _.isUndefined(this.options.step) ? 1 : this.options.step
+    this.handle = new Handle
+    this.handle.on('change', this.change, this)
+
+    if (this.min > this.max) {
+      throw new Error('Unsupported range')
+    }
+  },
+
   render: function () {
     this.$el.html(this.template)
-    var handle = new Handle()
-
-    handle.on('change', function (percentage) {
-      this.trigger('change', percentage)
-    }, this)
-
-    this.$('.slider-bar').append(handle.el)
-    if (this.options.percentage) {
-      handle.$el.css('left', (this.options.percentage * 100 + '%'))
-    }
+    this.$('.slider-bar').append(this.handle.el)
+    this.change(this.value / this.distance)
     return this
+  },
+
+  change: function (percentage) {
+    this.value = this.distance * percentage
+    if (this.step) {
+      this.value = Math.round(this.value / this.step) * this.step
+    }
+    this.trigger('change', this.value)
+    this.handle.position(this.value / this.distance)
   }
 
 })
