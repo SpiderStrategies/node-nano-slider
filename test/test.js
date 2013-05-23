@@ -23,6 +23,34 @@ describe('Slider', function () {
     $('#container').append(slider2.render().el)
   })
 
+  it('publishes slide events', function () {
+    var slider = new Slider().render()
+      , start = false
+      , slide = false
+      , stop = false
+
+    slider.on('startSlide', function () {
+      start = true
+    })
+
+    slider.on('slide', function () {
+      slide = true
+    })
+
+    slider.on('stopSlide', function () {
+      stop = true
+    })
+
+    slider.handle.$el.trigger($.Event('mousedown'))
+    assert(start)
+
+    $(document).trigger($.Event('mousemove', {pageX: 451}))
+    assert(slide)
+
+    $(document).trigger($.Event('mouseup'))
+    assert(stop)
+  })
+
   it('fires change event when value changes', function () {
     var slider = new Slider
       , calls = 0

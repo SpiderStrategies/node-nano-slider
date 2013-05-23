@@ -38,6 +38,18 @@
           console.log('step value', value, steps.value)
         })
 
+        steps.on('startSlide', function () {
+          console.log('start slide')
+        })
+
+        steps.on('stopSlide', function () {
+          console.log('stop slide')
+        })
+
+        steps.on('slide', function () {
+          console.log('slide')
+        })
+
         var tenStep = new Slider({step: 10})
         $('#output').append(tenStep.render().el)
         tenStep.on('change', function (value) {

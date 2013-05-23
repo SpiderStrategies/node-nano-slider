@@ -28,6 +28,8 @@ var Handle = Backbone.View.extend({
 
     $(document).on('mousemove touchmove', this.move)
     $(document).on('mouseup touchend', this.end)
+
+    this.trigger('start')
   },
 
   move: function (e) {
@@ -49,6 +51,7 @@ var Handle = Backbone.View.extend({
     e.preventDefault()
     $(document).off('mousemove touchmove gesturechange', this.move)
     $(document).off('mouseup touchend gestureend', this.end)
+    this.trigger('end')
   },
 
   click: function (e) {
@@ -75,6 +78,8 @@ var Slider = Backbone.View.extend({
     this.step = _.isUndefined(this.options.step) ? 1 : this.options.step
     this.handle = new Handle
     this.handle.on('change', this.change, this)
+    this.handle.on('start', this.startSlide, this)
+    this.handle.on('end', this.stopSlide, this)
 
     if (this.min > this.max) {
       throw new Error('Unsupported range')
@@ -88,6 +93,14 @@ var Slider = Backbone.View.extend({
     return this
   },
 
+  startSlide: function () {
+    this.trigger('startSlide')
+  },
+
+  stopSlide: function () {
+    this.trigger('stopSlide')
+  },
+
   change: function (percentage) {
     var prev = this.value
     this.value = percentage / (1 / (this.max - this.min)) + this.min
@@ -99,6 +112,8 @@ var Slider = Backbone.View.extend({
     if (prev !== this.value) {
       this.trigger('change', this.value)
     }
+
+    this.trigger('slide')
 
     this.handle.position((this.value - this.min) * (1 / (this.max - this.min)))
   }
