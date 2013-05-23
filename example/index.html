@@ -32,7 +32,7 @@
           console.log('percentage value', value)
         })
 
-        var steps = new Slider({min: 1, max: 50, value: 25})
+        var steps = new Slider({min: 5, max: 50, value: 25})
         $('#output').append(steps.render().el)
         steps.on('change', function (value) {
           console.log('step value', value, steps.value)

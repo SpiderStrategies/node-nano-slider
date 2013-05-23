@@ -16,7 +16,7 @@ describe('Slider', function () {
     assert.equal(slider2.step, 5)
 
     slider2.handle.position = function (pos) {
-      assert.equal(parseInt(pos * 100, 10), 44)
+      assert.equal(parseInt(pos * 100, 10), 45)
       done()
     }
 

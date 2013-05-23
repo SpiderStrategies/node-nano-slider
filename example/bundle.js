@@ -84,13 +84,14 @@ var Slider = Backbone.View.extend({
   render: function () {
     this.$el.html(this.template)
     this.$('.slider-bar').append(this.handle.el)
-    this.change(this.value / this.distance)
+    this.change((this.value - this.min) * (1 / (this.max - this.min)))
     return this
   },
 
   change: function (percentage) {
     var prev = this.value
-    this.value = this.distance * percentage
+    this.value = percentage / (1 / (this.max - this.min)) + this.min
+
     if (this.step) {
       this.value = Math.round(this.value / this.step) * this.step
     }
@@ -99,7 +100,7 @@ var Slider = Backbone.View.extend({
       this.trigger('change', this.value)
     }
 
-    this.handle.position(this.value / this.distance)
+    this.handle.position((this.value - this.min) * (1 / (this.max - this.min)))
   }
 
 })
