@@ -41,6 +41,7 @@
   padding: 10px;
   top: -15px;
   margin-left: -15px;
+  cursor: pointer;
 }
 
 /* Draw the blue ball handle */
