@@ -30,7 +30,10 @@ var Handle = Backbone.View.extend({
   move: function (e) {
     e.stopPropagation()
     var percentage = (pageX(e) - this.$el.parent().offset().left) / this.$el.parent().width()
-    if (percentage > 0 && percentage < 1) {
+
+    percentage = Math.max(0, percentage)
+    percentage = Math.min(1, percentage)
+    if (percentage >= 0 && percentage <= 1) {
       this.trigger('change', percentage)
     }
   },

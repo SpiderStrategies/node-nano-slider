@@ -33,7 +33,10 @@ var Handle = Backbone.View.extend({
   move: function (e) {
     e.stopPropagation()
     var percentage = (pageX(e) - this.$el.parent().offset().left) / this.$el.parent().width()
-    if (percentage > 0 && percentage < 1) {
+
+    percentage = Math.max(0, percentage)
+    percentage = Math.min(1, percentage)
+    if (percentage >= 0 && percentage <= 1) {
       this.trigger('change', percentage)
     }
   },
@@ -103,7 +106,7 @@ var Slider = Backbone.View.extend({
 
 module.exports = Slider
 
-},{"lodash":1,"backbone":2}],1:[function(require,module,exports){
+},{"backbone":1,"lodash":2}],2:[function(require,module,exports){
 (function(global){/**
  * @license
  * Lo-Dash 1.2.1 (Custom Build) <http://lodash.com/>
@@ -5370,7 +5373,7 @@ module.exports = Slider
 }(this));
 
 })(window)
-},{}],2:[function(require,module,exports){
+},{}],1:[function(require,module,exports){
 (function(){//     Backbone.js 1.0.0
 
 //     (c) 2010-2013 Jeremy Ashkenas, DocumentCloud Inc.
@@ -6944,5 +6947,5 @@ module.exports = Slider
 }).call(this);
 
 })()
-},{"lodash":1}]},{},[])
+},{"lodash":2}]},{},[])
 ;
