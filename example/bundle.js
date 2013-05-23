@@ -8,10 +8,6 @@ function pageX(e) {
   return e.type === 'touchmove' || e.type == 'touchstart' ? e.originalEvent.touches[0].pageX : e.pageX
 }
 
-function pageY(e) {
-  return e.type === 'touchmove'|| e.type == 'touchstart' ? e.originalEvent.touches[0].pageY : e.pageY
-}
-
 var Handle = Backbone.View.extend({
 
   className: 'slider-handle',
@@ -69,7 +65,6 @@ var Slider = Backbone.View.extend({
             '<div class="slider-big"></div>',
 
   initialize: function () {
-    console.log(this.options.value)
     this.min = _.isUndefined(this.options.min) ? 0 : this.options.min
     this.max = _.isUndefined(this.options.max) ? 100 : this.options.max
     this.value = _.isUndefined(this.options.value) ? this.min : this.options.value
@@ -87,16 +82,20 @@ var Slider = Backbone.View.extend({
     this.$el.html(this.template)
     this.$('.slider-bar').append(this.handle.el)
     this.change(this.value / this.distance)
-    console.log(this.distance, this.value)
     return this
   },
 
   change: function (percentage) {
+    var prev = this.value
     this.value = this.distance * percentage
     if (this.step) {
       this.value = Math.round(this.value / this.step) * this.step
     }
-    this.trigger('change', this.value)
+
+    if (prev !== this.value) {
+      this.trigger('change', this.value)
+    }
+
     this.handle.position(this.value / this.distance)
   }
 
@@ -104,7 +103,7 @@ var Slider = Backbone.View.extend({
 
 module.exports = Slider
 
-},{"backbone":1,"lodash":2}],2:[function(require,module,exports){
+},{"lodash":1,"backbone":2}],1:[function(require,module,exports){
 (function(global){/**
  * @license
  * Lo-Dash 1.2.1 (Custom Build) <http://lodash.com/>
@@ -5371,7 +5370,7 @@ module.exports = Slider
 }(this));
 
 })(window)
-},{}],1:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 (function(){//     Backbone.js 1.0.0
 
 //     (c) 2010-2013 Jeremy Ashkenas, DocumentCloud Inc.
@@ -6945,5 +6944,5 @@ module.exports = Slider
 }).call(this);
 
 })()
-},{"lodash":2}]},{},[])
+},{"lodash":1}]},{},[])
 ;

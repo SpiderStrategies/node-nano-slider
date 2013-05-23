@@ -83,11 +83,16 @@ var Slider = Backbone.View.extend({
   },
 
   change: function (percentage) {
+    var prev = this.value
     this.value = this.distance * percentage
     if (this.step) {
       this.value = Math.round(this.value / this.step) * this.step
     }
-    this.trigger('change', this.value)
+
+    if (prev !== this.value) {
+      this.trigger('change', this.value)
+    }
+
     this.handle.position(this.value / this.distance)
   }
 

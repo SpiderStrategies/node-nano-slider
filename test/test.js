@@ -23,6 +23,33 @@ describe('Slider', function () {
     $('#container').append(slider2.render().el)
   })
 
+  it('fires change event when value changes', function () {
+    var slider = new Slider
+      , calls = 0
+
+    $('#container').append(slider.render().el)
+
+    assert.equal(slider.value, 0)
+
+    slider.on('change', function () {
+      calls++
+    })
+
+    slider.handle.$el.parent().width = function () { return 1500 }
+
+    slider.handle.$el.trigger($.Event('mousedown'))
+    $(document).trigger($.Event('mousemove', {pageX: 451}))
+    $(document).trigger($.Event('mouseup'))
+
+    assert.equal(calls, 1)
+
+    slider.handle.$el.trigger($.Event('mousedown'))
+    $(document).trigger($.Event('mousemove', {pageX: 452}))
+    $(document).trigger($.Event('mouseup'))
+
+    assert.equal(calls, 1)
+  })
+
   it('slides', function () {
     var slider = new Slider
     $('#container').append(slider.render().el)
