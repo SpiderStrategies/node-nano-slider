@@ -1,6 +1,6 @@
 require=(function(e,t,n){function i(n,s){if(!t[n]){if(!e[n]){var o=typeof require=="function"&&require;if(!s&&o)return o(n,!0);if(r)return r(n,!0);throw new Error("Cannot find module '"+n+"'")}var u=t[n]={exports:{}};e[n][0].call(u.exports,function(t){var r=e[n][1][t];return i(r?r:t)},u,u.exports)}return t[n].exports}var r=typeof require=="function"&&require;for(var s=0;s<n.length;s++)i(n[s]);return i})({"./slider":[function(require,module,exports){
-module.exports=require('FLnI3w');
-},{}],"FLnI3w":[function(require,module,exports){
+module.exports=require('FiQ96f');
+},{}],"FiQ96f":[function(require,module,exports){
 var Backbone = require('backbone')
   , _ = require('lodash')
 
@@ -109,20 +109,20 @@ var Slider = Backbone.View.extend({
       this.value = Math.round(this.value / this.step) * this.step
     }
 
+    this.handle.position((this.value - this.min) * (1 / (this.max - this.min)))
+
     if (prev !== this.value) {
       this.trigger('change', this.value)
     }
 
     this.trigger('slide')
-
-    this.handle.position((this.value - this.min) * (1 / (this.max - this.min)))
   }
 
 })
 
 module.exports = Slider
 
-},{"backbone":1,"lodash":2}],2:[function(require,module,exports){
+},{"lodash":1,"backbone":2}],1:[function(require,module,exports){
 (function(global){/**
  * @license
  * Lo-Dash 1.2.1 (Custom Build) <http://lodash.com/>
@@ -5389,7 +5389,7 @@ module.exports = Slider
 }(this));
 
 })(window)
-},{}],1:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 (function(){//     Backbone.js 1.0.0
 
 //     (c) 2010-2013 Jeremy Ashkenas, DocumentCloud Inc.
@@ -6963,5 +6963,5 @@ module.exports = Slider
 }).call(this);
 
 })()
-},{"lodash":2}]},{},[])
+},{"lodash":1}]},{},[])
 ;

@@ -106,13 +106,13 @@ var Slider = Backbone.View.extend({
       this.value = Math.round(this.value / this.step) * this.step
     }
 
+    this.handle.position((this.value - this.min) * (1 / (this.max - this.min)))
+
     if (prev !== this.value) {
       this.trigger('change', this.value)
     }
 
     this.trigger('slide')
-
-    this.handle.position((this.value - this.min) * (1 / (this.max - this.min)))
   }
 
 })
