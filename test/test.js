@@ -83,20 +83,21 @@ describe('Slider', function () {
     $('#container').append(slider.render().el)
     assert.equal(slider.value, 0)
 
-    slider.$('.slider-bar').width(1593)
+    slider.$el.find('.slider-bar').width(1593)
     slider.handle.$el.parent().width = function () { return 1500 }
 
     slider.handle.$el.trigger($.Event('mousedown'))
-    $(document).trigger($.Event('mousemove', {pageX: 450}))
+    $(document).trigger($.Event('mousemove', {pageX: 410}))
     $(document).trigger($.Event('mouseup'))
 
-    assert.equal(slider.value, 25)
+    console.log(slider.value)
+    assert.equal(slider.value, 26)
   })
 
   it('renders', function () {
     var slider = new Slider
 
-    $('#container').append(slider.render().el)
+    $('#container').append(slider.render().$el)
 
     assert.equal($('#container .slider').size(), 1)
     assert.equal($('#container .slider .slider-small').size(), 1)

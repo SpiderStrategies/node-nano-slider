@@ -26,15 +26,15 @@
         var Slider = require('./slider')
 
         var percentage = new Slider({step: null})
-        $('#output').append(percentage.render().el)
+        $('#output').append(percentage.render().$el)
 
-        percentage.on('change', function (value) {
+        percentage.on('change', function (e, value) {
           console.log('percentage value', value)
         })
 
         var steps = new Slider({min: 5, max: 50, value: 25})
-        $('#output').append(steps.render().el)
-        steps.on('change', function (value) {
+        $('#output').append(steps.render().$el)
+        steps.on('change', function (e, value) {
           console.log('step value', value, steps.value)
         })
 
@@ -51,8 +51,8 @@
         })
 
         var tenStep = new Slider({step: 10})
-        $('#output').append(tenStep.render().el)
-        tenStep.on('change', function (value) {
+        $('#output').append(tenStep.render().$el)
+        tenStep.on('change', function (e, value) {
           console.log('tens value', value)
         })
       })
