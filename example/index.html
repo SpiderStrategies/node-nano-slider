@@ -3,7 +3,6 @@
   <head>
     <title>Slider Example</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.js"></script>
     <script src="./bundle.js"></script>
     <link rel="stylesheet" type="text/css" href="../slider.css">
 
@@ -22,8 +21,9 @@
 
     </style>
     <script type="text/javascript">
-      $(document).ready(function() {
+      window.onload = function ()  {
         var Slider = require('./slider')
+          , $ = require('jquery')
 
         var percentage = new Slider({step: null})
         $('#output').append(percentage.render().$el)
@@ -55,7 +55,8 @@
         tenStep.on('change', function (e, value) {
           console.log('tens value', value)
         })
-      })
+      }
+
     </script>
   </head>
 

@@ -1,5 +1,6 @@
   var Slider = require('../slider.js')
     , assert = require('assert')
+    , $ = require('jquery')
 
 describe('Slider', function () {
 

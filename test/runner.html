@@ -5,15 +5,14 @@
     <link rel="stylesheet" href="../node_modules/mocha/mocha.css"/>
     <link rel="stylesheet" href="../slider.css"/>
     <script src="../node_modules/mocha/mocha.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.js"></script>
     <script>
       mocha.setup({ui: 'bdd', globals: ['jQuery*']})
     </script>
     <script src="./bundle.js"></script>
     <script>
-      $(function () {
+      window.onload = function () {
         mocha.run()
-      })
+      }
     </script>
   </head>
   <body>

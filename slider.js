@@ -1,3 +1,5 @@
+var $ = require('jquery')
+
 function isUndefined(val) {
   return typeof val == 'undefined'
 }
