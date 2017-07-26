@@ -15,7 +15,7 @@
   "readmeFilename": "README.md",
   "gitHead": "b039295bf428331c0aa6c2fa89aa24f4ae2964e3",
   "devDependencies": {
-    "browserify": "~2.13.3",
+    "browserify": "^14.4.0",
     "mocha": "~1.10.0"
   },
   "dependencies": {
