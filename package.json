@@ -7,6 +7,10 @@
     "type": "git",
     "url": "git://github.com/SpiderStrategies/node-nano-slider.git"
   },
+  "scripts": {
+    "bundle": "browserify -r ./slider -r jquery -o example/bundle.js",
+    "test": "browserify -d ./test/test.js -o test/bundle.js"
+  },
   "keywords": [
     "slider"
   ],
@@ -15,10 +19,10 @@
   "readmeFilename": "README.md",
   "gitHead": "b039295bf428331c0aa6c2fa89aa24f4ae2964e3",
   "devDependencies": {
-    "browserify": "~2.13.3",
+    "browserify": "^14.4.0",
     "mocha": "~1.10.0"
   },
   "dependencies": {
-    "jquery": "^2.1.1"
+    "jquery": "^3.2.1"
   }
 }
