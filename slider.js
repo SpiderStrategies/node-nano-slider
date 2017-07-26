@@ -39,7 +39,7 @@ EventEmitter.prototype.on = function (evt, fn, context) {
 
 EventEmitter.prototype.off = function (evt, fn) {
  !this.jq && this.init()
- this.jq.unbind(evt, fn)
+ this.jq.off(evt, fn)
 }
 
 var Handle = function () {
